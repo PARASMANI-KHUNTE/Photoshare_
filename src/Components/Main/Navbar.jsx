@@ -34,23 +34,51 @@ const Navbar = () => {
     }
   };
   return (
-    <div className=' bg-white shadow p-5'>
-      
-      <div className='flex justify-between items-center'> 
-      <Link className=' p-2 text-bold' to="/home">PHOTOSHARE</Link>
-        <ul className='space-x-5' >
-          <Link className=' hover:text-white hover:bg-blue-500 rounded-full p-3 shadow' to="/home"><FontAwesomeIcon icon={faHouse} size="lg"/></Link>
-          <Link className=' hover:text-white hover:bg-blue-500 rounded-full p-3 shadow' to="/post"><FontAwesomeIcon icon={faPlus} size="lg" /></Link>
-          {/* <Link className=' hover:text-white hover:bg-blue-500 rounded-full p-3 shadow' to="/chat"><FontAwesomeIcon icon={faComment} size="lg" /></Link> */}
-          <Link className=' hover:text-white hover:bg-blue-500 rounded-full p-3 shadow' to="/notification"><FontAwesomeIcon icon={faBell} size="lg" /></Link>
-          <Link className=' hover:text-white hover:bg-blue-500 rounded-full p-3 shadow' to="/profile"><FontAwesomeIcon icon={faUser} size="lg" /></Link>
-          {/* <Link className=' hover:text-white hover:bg-blue-500 rounded-full p-3 shadow' to="/settings"><FontAwesomeIcon icon={faGear}  size="lg" /></Link> */}
-          <button className='hover:text-white hover:bg-red-500 rounded-full p-3 shadow' onClick={handleLogout}><FontAwesomeIcon icon={faPersonThroughWindow}  size="lg"/></button>
-        </ul>
-      </div>
+   <div className='bg-white shadow-md p-4 md:p-5'>
+  <div className='flex flex-col md:flex-row justify-between items-center'>
+    <Link className='text-lg font-bold mb-4 md:mb-0' to="/home">PHOTOSHARE</Link>
+    <ul className='flex flex-wrap space-x-4 md:space-x-5'>
+      <li>
+        <Link className='hover:text-white hover:bg-blue-500 rounded-full p-3 shadow-md transition-colors duration-300' to="/home">
+          <FontAwesomeIcon icon={faHouse} size="lg" />
+        </Link>
+      </li>
+      <li>
+        <Link className='hover:text-white hover:bg-blue-500 rounded-full p-3 shadow-md transition-colors duration-300' to="/post">
+          <FontAwesomeIcon icon={faPlus} size="lg" />
+        </Link>
+      </li>
+      {/* Uncomment this if you want to include the chat icon */}
+      {/* <li>
+        <Link className='hover:text-white hover:bg-blue-500 rounded-full p-3 shadow-md transition-colors duration-300' to="/chat">
+          <FontAwesomeIcon icon={faComment} size="lg" />
+        </Link>
+      </li> */}
+      <li>
+        <Link className='hover:text-white hover:bg-blue-500 rounded-full p-3 shadow-md transition-colors duration-300' to="/notification">
+          <FontAwesomeIcon icon={faBell} size="lg" />
+        </Link>
+      </li>
+      <li>
+        <Link className='hover:text-white hover:bg-blue-500 rounded-full p-3 shadow-md transition-colors duration-300' to="/profile">
+          <FontAwesomeIcon icon={faUser} size="lg" />
+        </Link>
+      </li>
+      {/* Uncomment this if you want to include the settings icon */}
+      {/* <li>
+        <Link className='hover:text-white hover:bg-blue-500 rounded-full p-3 shadow-md transition-colors duration-300' to="/settings">
+          <FontAwesomeIcon icon={faGear} size="lg" />
+        </Link>
+      </li> */}
+      <li>
+        <button className='hover:text-white hover:bg-red-500 rounded-full p-3 shadow-md transition-colors duration-300' onClick={handleLogout}>
+          <FontAwesomeIcon icon={faPersonThroughWindow} size="lg" />
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
 
-
-    </div>
   )
 }
 
