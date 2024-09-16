@@ -47,7 +47,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error during login:', error);
-      setErrorMessage('An error occurred. Please try again.');
+      setErrorMessage('An error occurred. Please try again. ');
     }
   };
 
@@ -96,6 +96,9 @@ const Login = () => {
         <div className="mt-4">
           <Link to="/resetPassword" className="text-blue-600 hover:underline">
             Forgot Password?
+          </Link>
+          <Link to="/resetPassword" className="text-blue-600 hover:underline">
+            Verify Email
           </Link>
         </div>
       </form>

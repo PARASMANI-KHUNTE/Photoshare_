@@ -36,7 +36,9 @@ const VerifyOtp = () => {
           navigate('/login'); // Redirect to login on successful sign-up verification
         } else if (context === 'resetPassword') {
           navigate('/resetPasswordForm',{ state: { email: email } }); // Redirect to reset password form
-        }
+        }  else if (context === 'emailVerify') {
+          navigate('/login',{ state: { email: email } }); // Redirect to reset password form
+        } 
       } else {
         toast.error("Invalid OTP")
         setErrorMessage(response.data.error || 'Invalid OTP. Please try again.');

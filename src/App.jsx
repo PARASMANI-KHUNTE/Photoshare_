@@ -11,6 +11,7 @@ import Post from './Components/Main/PostForm.jsx';
 import Settings from '../src/Components/Main/Settings.jsx';
 import ResetPassword from "../src/Components/Auth/ResetPassword.jsx";
 import ResetPasswordForm from "../src/Components/Auth/ResetPasswordForm.jsx";
+import VerifyEmail from "./Components/Auth/VerifyEmail.jsx";
 const App = () => {
   return (
     <div>
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="/resetPasswordForm" element={<ResetPasswordForm />} />
+          <Route path="/verifyEmail" element={<VerifyEmail />} />
         </Routes>
       </Router>
     </div>
