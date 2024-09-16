@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faUpload , faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import {  faUpload , faCloudUploadAlt  } from '@fortawesome/free-solid-svg-icons';
 // import Cookies from 'js-cookie'; // Import js-cookie for cookie handling
 import Navbar from './Navbar';
 const PostForm = () => {

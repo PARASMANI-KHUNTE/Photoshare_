@@ -2,7 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom'; // Added Link for forgot password navigation
 import {  toast } from 'react-toastify';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faEye  , faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import AuthNav from './AuthNav';
 
 
@@ -80,7 +81,7 @@ const Login = () => {
         {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
         <div className="mb-4 flex justify-between space-x-4">
           <button onClick={togglePasswordVisibility} className="togglePassword bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-            {showPassword ? 'Hide Password' : 'Show Password'}
+            {showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
           </button>
           <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             Login

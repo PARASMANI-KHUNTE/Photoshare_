@@ -3,11 +3,14 @@ import axios from 'axios';
 import { useNavigate  } from 'react-router-dom';  // Changed to useNavigate for React Router v6
 import AuthNav from './AuthNav';
 import {  toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faEye  , faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 const Signup = () => {
   const baseUrl = "https://photoshare-backend.onrender.com/"
   const navigate = useNavigate();  // Changed to useNavigate
   const [formData, setFormData] = useState({ Fullname: '', Email: '', Username: '', Password: '' });
   const [error, setError] = useState(null);  // Optional: to handle any error message from the server
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,6 +41,11 @@ const Signup = () => {
       console.error('Error sending signup data:', error);  // Handle network or other errors
       setError('An error occurred. Please try again later.');  // Set an error message
     }
+  };
+
+  const togglePasswordVisibility = (e) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -81,7 +89,7 @@ const Signup = () => {
         <div className="mb-4">
           <label htmlFor="Password" className="block text-gray-700 font-bold mb-2">Password</label>
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="Password"
             onChange={handleChange}
             value={formData.Password}
@@ -90,9 +98,15 @@ const Signup = () => {
           />
         </div>
         {error && <p className="text-red-500">{error}</p>} {/* Optional: Display error message */}
+        <div className='space-x-4'>
+        <button onClick={togglePasswordVisibility} className="togglePassword bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+            {showPassword ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
+          </button>
         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        
           Signup
         </button>
+        </div>
       </form>
       </div>
       
