@@ -92,7 +92,6 @@ const PostCard = ({ avtarUrl, postTitle, postDesc, postId, postMediaUrl, byUser,
             className="flex items-center space-x-1 bg-gray-500 text-white px-2 py-1 rounded-md"
           >
             <FontAwesomeIcon icon={faComment} size="lg" />
-            <span>Comments</span>
           </button>
         </div>
       </div>

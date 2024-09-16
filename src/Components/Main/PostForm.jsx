@@ -2,6 +2,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faUpload , faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 // import Cookies from 'js-cookie'; // Import js-cookie for cookie handling
 import Navbar from './Navbar';
 const PostForm = () => {
@@ -93,8 +95,9 @@ const PostForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="file" className="block text-gray-700 font-semibold">Upload Image</label>
+            <label htmlFor="file" className="block text-gray-700 font-semibold"> <FontAwesomeIcon icon={faCloudUploadAlt} /> Upload Image</label>
             <input
+            style={{ display: 'none' }} 
               type="file"
               id="file"
               onChange={handleFileChange}
@@ -105,7 +108,7 @@ const PostForm = () => {
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
           {successMessage && <p className="text-green-500">{successMessage}</p>}
           <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
-            Submit Post
+          <FontAwesomeIcon icon={faUpload} />
           </button>
         </form>
       </div>

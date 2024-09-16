@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {  toast } from 'react-toastify';
 import PostByUser from './PostByUser'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faUpload , faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 const Profile = () => {
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
@@ -93,18 +95,23 @@ const Profile = () => {
     <div >
        <Navbar/>
       <div className=" bg-gray-100 flex flex-col items-center justify-center">
-      <div className="min-h-screen bg-white p-8 rounded-lg shadow-lg w-full ">
+      <div className="min-h-screen bg-gray-100 p-8 rounded-lg shadow-lg w-full ">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-gray-800">Profile</h1>
           <div>
-            <label className="block text-gray-700 font-semibold mb-1">Edit Avatar</label>
-            <input type="file" onChange={handleFileChange} className="block mb-2" />
+            <div className='space-x-4'>
+            <label htmlFor="file-upload" className="custom-file-upload">
+                <FontAwesomeIcon icon={faCloudUploadAlt} /> Upload File
+              </label>
+            <input  id="file-upload"  style={{ display: 'none' }} type="file" onChange={handleFileChange} className="block mb-2" />
             <button
               onClick={handleAvatarUpload}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              className="bg-blue-500 text-white px-4 p-1 rounded-lg hover:bg-blue-700"
             >
-              Upload Avatar
+             <FontAwesomeIcon icon={faUpload} size='xs' />
             </button>
+            </div>
+            
           </div>
         </div>
 
@@ -120,14 +127,13 @@ const Profile = () => {
             {/* <p className="text-gray-600 mb-1"><strong>Followers:</strong> {userDetails.FollowerCount}</p>
             <p className="text-gray-600"><strong>Following:</strong> {userDetails.FollowingCount}</p> */}
           </div>
-        </div><PostByUser/>
+        </div>
+        <hr className='mt-10'/>
+        <h1 className='text-center mt-5'><strong>Your Posts</strong></h1>
+         <PostByUser/>
       </div>
+     
       </div>
-              
-
-
-          
-      
     </div>
   );
 };

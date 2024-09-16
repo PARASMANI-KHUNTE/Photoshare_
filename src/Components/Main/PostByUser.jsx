@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare , faXmark , faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 const Posts = () => {
     const baseUrl = "https://photoshare-backend.onrender.com/"
     const [posts, setPosts] = useState([]);
@@ -116,13 +117,13 @@ const Posts = () => {
                                         onClick={() => handleUpdate(post._id)}
                                         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg"
                                     >
-                                        Save
+                                        <FontAwesomeIcon icon={faFloppyDisk} />
                                     </button>
                                     <button
                                         onClick={handleCancelEdit}
                                         className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg"
                                     >
-                                        Cancel
+                                        <FontAwesomeIcon icon={faXmark} />
                                     </button>
                                 </div>
                             </>
@@ -145,13 +146,12 @@ const Posts = () => {
                                         onClick={() => handleEditClick(post)}
                                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
                                     >
-                                        Edit
+                                        <FontAwesomeIcon icon={faPenToSquare} />
                                     </button>
                                     <button
                                         onClick={() => handleDelete(post._id, post.ImageUrl)}
                                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg"
-                                    >
-                                        Delete
+                                    ><FontAwesomeIcon icon={faTrash} />
                                     </button>
                                     
                                 </div>
