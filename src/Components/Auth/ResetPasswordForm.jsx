@@ -29,11 +29,12 @@ const ResetPasswordForm = () => {
         toast.success("Reset Password Successfull");
         navigate('/login'); // Redirect to login after successful password reset
       } else {
-        toast.error("Reset Password Failed");
+        toast.error(`Reset Password Failed ${response.data.message}`);
         setErrorMessage(response.data.message || 'Error resetting password');
       }
     } catch (error) {
       console.error('Error resetting password:', error);
+      toast.error('Error resetting password:', error);
       setErrorMessage('An error occurred. Please try again later.');
     }
   };
