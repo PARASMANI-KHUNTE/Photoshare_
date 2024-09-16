@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faTrashCan ,faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const CommentCard = ({ postId }) => {
   const username = localStorage.getItem('username');
@@ -119,7 +121,7 @@ const CommentCard = ({ postId }) => {
                 onClick={() => handleDeleteComment(comment._id)}
                 className="text-red-500 hover:underline"
               >
-                Delete
+                <FontAwesomeIcon icon={faTrashCan} />
               </button>
             )}
           </div>
@@ -135,7 +137,7 @@ const CommentCard = ({ postId }) => {
           placeholder="Add a comment..."
         />
         <button onClick={handleAddComment} className="bg-blue-500 text-white px-4 py-2 rounded-r-lg">
-          Comment
+        <FontAwesomeIcon icon={faPaperPlane} />
         </button>
       </div>
     </div>
