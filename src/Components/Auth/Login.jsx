@@ -34,7 +34,12 @@ const Login = () => {
         localStorage.setItem('username', username);
         toast.success("Login Successfull");
         navigate('/home');
-      } else {
+      }else if(response.status == 403){
+        toast.error("Login Failed");
+        toast.error('You are not a verified user. ');
+        setErrorMessage(response.data.error || 'You havent verified your account while signing up. cant let you in.');
+      }
+      else {
         toast.error("Login Failed");
         toast.error('Invalid login credentials.');
         setErrorMessage(response.data.error || 'Invalid login credentials.');
