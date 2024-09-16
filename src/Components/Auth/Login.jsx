@@ -36,6 +36,7 @@ const Login = () => {
         navigate('/home');
       } else {
         toast.error("Login Failed");
+        toast.error('Invalid login credentials.');
         setErrorMessage(response.data.error || 'Invalid login credentials.');
         
       }
