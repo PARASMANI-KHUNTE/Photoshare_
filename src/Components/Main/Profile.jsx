@@ -122,8 +122,11 @@ const Profile = () => {
             className="w-32 h-32 rounded-full object-cover mr-6"
           />
           <div>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">{userDetails.FullName || userDetails.Username}</h2>
-            <p className="text-gray-600 mb-1"><strong>Email:</strong> {userDetails.Email}</p>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-2">{userDetails?.Username}</h2>
+
+              <p className="text-gray-600 mb-1"><strong>Email:</strong> {userDetails?.Email}</p>
+    
+      
             {/* <p className="text-gray-600 mb-1"><strong>Followers:</strong> {userDetails.FollowerCount}</p>
             <p className="text-gray-600"><strong>Following:</strong> {userDetails.FollowingCount}</p> */}
           </div>
