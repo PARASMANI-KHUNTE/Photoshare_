@@ -12,7 +12,14 @@ const VerifyOtp = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [resendSuccess, setResendSuccess] = useState('');
   const navigate = useNavigate(); // Use useNavigate for redirection
-
+  const showLoadingToast = () => {
+    const loadingToast = toast.loading('Loading...');
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.dismiss(loadingToast); // Dismiss loading toast
+      toast.success('Data loaded successfully!'); // Show success message
+    }, 5000);
+  };
   // Handle OTP verification
   const handleOtpVerify = async (e) => {
     e.preventDefault();
@@ -28,7 +35,7 @@ const VerifyOtp = () => {
         email,
         otp: parseInt(otp, 10), // Convert to number if necessary
       });
-
+      showLoadingToast()
       if (response.data.success) {
         console.log('OTP Verified');
         toast.success("OTP Verified");

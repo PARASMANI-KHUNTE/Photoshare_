@@ -7,13 +7,20 @@ const ResetPassword = () => {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-
+  const showLoadingToast = () => {
+    const loadingToast = toast.loading('Loading...');
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.dismiss(loadingToast); // Dismiss loading toast
+      toast.success('Data loaded successfully!'); // Show success message
+    }, 5000);
+  };
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(`${baseUrl}auth/sendOtp`, { email });
-
+      showLoadingToast()
       if (response.data.success) {
         toast.success(`OTP Sent Successfully  to ${email}` )
         navigate('/verifyOtp', { state: { email, context: 'resetPassword' } });

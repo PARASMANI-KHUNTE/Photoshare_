@@ -12,6 +12,14 @@ const Posts = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
+    const showLoadingToast = () => {
+        const loadingToast = toast.loading('Loading...');
+        // Simulate an async operation
+        setTimeout(() => {
+          toast.dismiss(loadingToast); // Dismiss loading toast
+          toast.success('Data loaded successfully!'); // Show success message
+        }, 5000);
+      };
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -25,6 +33,7 @@ const Posts = () => {
                         withCredentials: true
                     }
                 );
+                showLoadingToast()
                 setPosts(response.data.posts);
             } catch (error) {
                 setErrorMessage('Failed to fetch posts.');

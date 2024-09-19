@@ -10,7 +10,14 @@ const ResetPasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-
+  const showLoadingToast = () => {
+    const loadingToast = toast.loading('Loading...');
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.dismiss(loadingToast); // Dismiss loading toast
+      toast.success('Data loaded successfully!'); // Show success message
+    }, 5000);
+  };
   const handlePasswordSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,7 +31,7 @@ const ResetPasswordForm = () => {
         email,
         password,
       });
-
+      showLoadingToast()
       if (response.data.success) {
         toast.success("Reset Password Successfull");
         navigate('/login'); // Redirect to login after successful password reset

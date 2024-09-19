@@ -4,6 +4,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
 import CommentCard from './CommentCard'; // Assuming CommentCard component will be in the same folder
 
 const PostCard = ({ avtarUrl, postTitle, postDesc, postId, postMediaUrl, byUser, dateTime, PostLikes }) => {
@@ -14,6 +15,7 @@ const PostCard = ({ avtarUrl, postTitle, postDesc, postId, postMediaUrl, byUser,
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
   const [isReadMore, setIsReadMore] = useState(true);
+
   useEffect(() => {
     // Check if the user has already liked the post
     const checkLikeStatus = async () => {
@@ -28,6 +30,7 @@ const PostCard = ({ avtarUrl, postTitle, postDesc, postId, postMediaUrl, byUser,
             withCredentials: true,
           }
         );
+        
         setIsLiked(response.data.isLiked);
       } catch (error) {
         console.error("Error checking like status:", error);

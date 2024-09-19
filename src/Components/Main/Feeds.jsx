@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PostCard from "./PostCard";
-
+import { toast } from 'react-toastify';
 const Feeds = () => {
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
@@ -10,7 +10,14 @@ const Feeds = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const showLoadingToast = () => {
+    const loadingToast = toast.loading('Loading...');
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.dismiss(loadingToast); // Dismiss loading toast
+      toast.success('Data loaded successfully!'); // Show success message
+    }, 5000);
+  };
   // Fetch posts from the backend
   useEffect(() => {
     const fetchPosts = async () => {
@@ -24,6 +31,7 @@ const Feeds = () => {
           withCredentials: true,
         }); // Update with your actual API URL
         // Assuming the response structure has the posts inside 'data' as an array
+        showLoadingToast();
         setPosts(response.data.posts); 
         setLoading(false);
       } catch (err) {

@@ -15,7 +15,14 @@ const PostForm = () => {
   const [file, setFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-
+  const showLoadingToast = () => {
+    const loadingToast = toast.loading('Loading...');
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.dismiss(loadingToast); // Dismiss loading toast
+      toast.success('Data loaded successfully!'); // Show success message
+    }, 5000);
+  };
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
@@ -43,7 +50,7 @@ const PostForm = () => {
           withCredentials: true,  // Ensure cookies are sent with the request
         }
       );
-  
+      showLoadingToast();
       toast.success('Post uploaded successfully!');
       setSuccessMessage('Post uploaded successfully!');
       setErrorMessage('');

@@ -13,6 +13,14 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const showLoadingToast = () => {
+    const loadingToast = toast.loading('Loading...');
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.dismiss(loadingToast); // Dismiss loading toast
+      toast.success('Data loaded successfully!'); // Show success message
+    }, 5000);
+  };
   // Fetch user details from API
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -31,7 +39,7 @@ const Profile = () => {
             },
             withCredentials: true,  // Ensure cookies are sent with the request
           });
-
+        showLoadingToast();
         setUserDetails(response.data.user);
         setLoading(false);
       } catch (err) {

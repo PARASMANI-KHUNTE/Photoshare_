@@ -8,6 +8,14 @@ const VerifyEmail = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const baseUrl = "https://photoshare-backend.onrender.com"
+    const showLoadingToast = () => {
+        const loadingToast = toast.loading('Loading...');
+        // Simulate an async operation
+        setTimeout(() => {
+          toast.dismiss(loadingToast); // Dismiss loading toast
+          toast.success('Data loaded successfully!'); // Show success message
+        }, 5000);
+      };
     const handleSendOtp = async () => {
         if (!email) {
             toast.error('Please enter your email.');
@@ -15,10 +23,10 @@ const VerifyEmail = () => {
         }
 
         setLoading(true);
-
+        
         try {
             const response = await axios.post(`${baseUrl}/sendOtp`, { email });
-            
+            showLoadingToast()
             if (response.data.success) {
                 toast.success('OTP sent successfully!');
                 navigate('/verifyOtp', { state: { email, context: 'emailVerify' } });
