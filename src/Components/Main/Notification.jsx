@@ -20,6 +20,7 @@ const Notification = () => {
 
   // Polling: Fetch notifications every 10 seconds
   useEffect(() => {
+    showLoadingToast()
      // Fetch notifications for the logged-in user
   const fetchNotifications = async () => {
     try {
@@ -37,8 +38,8 @@ const Notification = () => {
     }
   };
     const intervalId = setInterval(() => {
-      fetchNotifications();
-      showLoadingToast()
+      fetchNotifications()
+
     }, 10000); // Fetch notifications every 10 seconds
     return () => clearInterval(intervalId);
   }, [token , username]);
