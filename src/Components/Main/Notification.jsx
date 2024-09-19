@@ -2,13 +2,20 @@ import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import NotificationCard from './NotificationCard';
-
+import {  toast } from 'react-toastify';
 const Notification = () => {
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
   const baseUrl = "https://photoshare-backend.onrender.com/"
   const [notifications, setNotifications] = useState([]);
-
+  const showLoadingToast = () => {
+    const loadingToast = toast.loading('Loading...');
+    // Simulate an async operation
+    setTimeout(() => {
+      toast.dismiss(loadingToast); // Dismiss loading toast
+      toast.success('Data loaded successfully!'); // Show success message
+    }, 5000);
+  };
  
 
   // Polling: Fetch notifications every 10 seconds
@@ -24,6 +31,7 @@ const Notification = () => {
         withCredentials: true,
       });
       setNotifications(response.data); // Assume data is an array of notifications
+      showLoadingToast()
     } catch (error) {
       console.error("Error fetching notifications:", error);
     }
