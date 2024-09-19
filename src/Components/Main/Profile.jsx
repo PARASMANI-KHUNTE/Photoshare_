@@ -39,7 +39,7 @@ const Profile = () => {
             },
             withCredentials: true,  // Ensure cookies are sent with the request
           });
-        showLoadingToast();
+        
         setUserDetails(response.data.user);
         setLoading(false);
       } catch (err) {
@@ -48,7 +48,7 @@ const Profile = () => {
         setLoading(false);
       }
     };
-
+    showLoadingToast();
     fetchUserDetails();
   }, [token,username]);
 

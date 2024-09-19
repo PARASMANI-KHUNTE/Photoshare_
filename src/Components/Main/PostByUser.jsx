@@ -33,7 +33,7 @@ const Posts = () => {
                         withCredentials: true
                     }
                 );
-                showLoadingToast()
+                
                 setPosts(response.data.posts);
             } catch (error) {
                 setErrorMessage('Failed to fetch posts.');
@@ -42,6 +42,7 @@ const Posts = () => {
         };
 
         if (username) {
+            showLoadingToast()
             fetchPosts();
         }
     }, [username,token]);

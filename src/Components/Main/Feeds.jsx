@@ -22,7 +22,7 @@ const Feeds = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        
+
         const response = await axios.get(`${baseUrl}UploadPost/posts`, {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -31,7 +31,7 @@ const Feeds = () => {
           withCredentials: true,
         }); // Update with your actual API URL
         // Assuming the response structure has the posts inside 'data' as an array
-        showLoadingToast();
+        
         setPosts(response.data.posts); 
         setLoading(false);
       } catch (err) {
@@ -40,7 +40,7 @@ const Feeds = () => {
         setLoading(false);
       }
     };
-
+    showLoadingToast();
     fetchPosts();
   }, [token,username]); // Empty dependency array to run the effect only once on component mount
 

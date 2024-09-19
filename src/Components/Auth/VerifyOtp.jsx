@@ -23,7 +23,7 @@ const VerifyOtp = () => {
   // Handle OTP verification
   const handleOtpVerify = async (e) => {
     e.preventDefault();
-
+    showLoadingToast()
     if (otp.length !== 6) {
       toast("OTP must be 6 digits.");
       setErrorMessage('OTP must be 6 digits.');
@@ -31,11 +31,12 @@ const VerifyOtp = () => {
     }
 
     try {
+      
       const response = await axios.post(`${baseUrl}auth/verifyOtp`, {
         email,
         otp: parseInt(otp, 10), // Convert to number if necessary
       });
-      showLoadingToast()
+      
       if (response.data.success) {
         console.log('OTP Verified');
         toast.success("OTP Verified");
@@ -58,6 +59,7 @@ const VerifyOtp = () => {
 
   // Handle Resend OTP
   const handleResendOtp = async () => {
+    showLoadingToast()
     try {
       const response = await axios.post(`${baseUrl}auth/sendOtp`, {
         email,

@@ -31,13 +31,14 @@ const Notification = () => {
         withCredentials: true,
       });
       setNotifications(response.data); // Assume data is an array of notifications
-      showLoadingToast()
+      
     } catch (error) {
       console.error("Error fetching notifications:", error);
     }
   };
     const intervalId = setInterval(() => {
       fetchNotifications();
+      showLoadingToast()
     }, 10000); // Fetch notifications every 10 seconds
     return () => clearInterval(intervalId);
   }, [token , username]);
